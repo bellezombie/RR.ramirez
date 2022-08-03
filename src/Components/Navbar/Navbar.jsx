@@ -1,38 +1,32 @@
-import React from 'react'
-import "./Navbar.css"
-import { BsCartCheck } from "react-icons/bs";
+import React, {useState} from 'react';
+//import styled from 'styled-components';
+import CartWidget from './CartWidget';
+import { NavLink } from 'react-router-dom';
 
-const Navbar = () => {
-  return (
-    <div>
-    <nav className="navbar text-white  bg-dark mb-2 pl-2">
-    <a className='navbar-brand pt=4" pl-2 ml-2 href="#"'>RRecords</a>
- <ul className="nav justify-center">
-  <li className="nav-item">
-    <a className="nav-link active" aria-current="page" href="#">Vinilos</a>
-  </li>
-  <li className="nav-item">
-    <a className="nav-link text-white" href="#">Contacto</a>
-  </li>
-  <li className="nav-item">
-    <a className="nav-link text-white" href="#">Nosotros</a>
-  </li>
-  <li className="nav-item">
-    <a className="nav-link text-white" href="#">FAQ</a>
-  </li>
-  <li>
-  
-  </li>
-</ul>
 
-<div className="pl-2 text-white">
-  <BsCartCheck size={28}/>
-</div>
 
-</nav>
-
-    </div>
-  )
+const NavBar = () => {
+    const [links, setLinks] = useState([
+        {N: 'RRecords', url: '/'}, 
+        {N: 'Nosotros', url: '/'}, 
+        {N: 'Vinilos', url: '/category/:idCat'}, 
+        {N: 'Genero', url: '/item/:IdP'}
+      ])
+    
+    return(
+        <header >
+            <nav >
+                <NavLink to='/' >
+                    {/* <img src={logo} alt={"logo"}/> no te olvides de agregar*/}
+                </NavLink>
+                <ul >
+                    {links.map((link, i) => {
+                    return (<li key={i}><NavLink to={link.url}>{link.N}</NavLink></li>)
+                    })}
+                    <CartWidget />
+                </ul>
+            </nav>
+        </header>
+    )
 }
-
-export default Navbar
+export default NavBar;

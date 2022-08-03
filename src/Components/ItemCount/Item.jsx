@@ -15,7 +15,7 @@ export default function Item({ producto }) {
             <img
               src={image}
               className="card-img-top"
-              alt="Imagen de Producto"
+              alt="Imagen del Producto"
             />
             <p>"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."</p>
             <h6>${price}</h6>

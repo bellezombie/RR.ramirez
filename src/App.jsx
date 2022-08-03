@@ -1,23 +1,28 @@
-import './App.css'
-import Navbar from './Components/Navbar/Navbar'
-import Cards from './Components/Card/Cards'
-//import ItemList from './Components/ItemCount/ItemList'
-//import ItemListContainer from './Components/ItemCount/ItemListContainer'
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import ItemListContainer from './Components/ItemCount/ItemListContainer';
+import NavBar from './Components/Navbar/Navbar';
+import ItemDetailContainer from './Components/ItemCount/ItemDetailContainer';
 
- 
-const App = () => {
 
-  return (  
-    <>
-    <Navbar/>
-    <Cards/>   {/*falle como una campeona poniendo las cosas como tenian que estas
-    deje estos componentes que tiran*/}
-    {/*   <ItemList  />*/}
+function App() {
+  
+  return (
+   <>
+   <BrowserRouter>
+   <NavBar/>
 
-{/*Pero los Items que seria lo mismo que los card/s hay algo que no veo que es
-estoy haciendo mal*/}
+        <Routes>
+          <Route path='/' element={<ItemListContainer />} /> 
+          <Route path='/category/:idCat' element={<ItemListContainer />} />
+          <Route path='/item/:IdP' element={<ItemDetailContainer />} />
+          <Route path='*' element={<p>404</p>} />
+        </Routes>  
 
-    </>
+<h6>Aca vamo' a poner un Footer</h6>
+
+   </BrowserRouter> 
+   </>
   )
 }
 

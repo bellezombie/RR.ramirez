@@ -1,4 +1,4 @@
-import React from 'react'
+/*import React from 'react'
 import Card from './Card'
 
 import b from "./b.jpg"
@@ -40,4 +40,4 @@ const Cards = () => {
   );
 }
 
-export default Cards;
+export default Cards;*/
