@@ -1,37 +1,25 @@
 import React, {useEffect, useState} from 'react'
 import { useParams } from 'react-router-dom';
+import {getPhardcoreById} from '../../../products';
+import ItemDetail from './ItemDetail';
 
-function ItemDetailContainer() {
-const {idCat} = useParams()
+export default function ItemDetailContainer() {
 
-useEffect(() => {
+  const [detail,setDetail] =useState([])
+ const {idDetail}=useParams()
+    useEffect(()=>{      
+      dataP()
+    },[idDetail])
 
-  let productHardcore = [
-  {id: 0, name: 'Blur', image:b ,price:21100, idCat: 'Bpop'},
-  {id: 1, name: 'Aphex Twin', image: bs ,price:15000, idCat: 'Atechno'},
-  {id: 2, name: 'Black Sab', image:at ,price:12000, idCat: 'Hmetal'},
-  {id: 3, name: 'vinilo 4', image:b ,price:10000, idCat: 'Bpop'},
-  {id: 4, name: 'vinilo 5', image:bs ,price:11100, idCat: 'Bpop'},
-  ];
+  const dataP=()=>{
+    getPhardcoreById(idDetail).then(respuesta=>{
+    setDetail(respuesta) 
+    }
+    )} 
   
-  const promesaProductos = new Promise((res,rej) =>{
-    setTimeout(() => {
-          if(!idCat){
-            res(productHardcore);
-          }else {res(productHardcore.filter(productos=> productHardcore.idCat === idCat));}
-         }, 2000);
-   });
-  
-  promesaProductos.then((respuesta)=>{
-  
-      setProductos(respuesta);
-      
-   });
-    
-  },[productos, setProductos, idCat]); 
   return (
-    <div>TERMINAR ITEMdCONT</div>
-  )
+  <>
+  <ItemDetail  {...detail}/>
+  </>
+ );
 }
-
-export default ItemDetailContainer

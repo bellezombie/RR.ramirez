@@ -10,7 +10,7 @@ const NavBar = () => {
         {N: 'RRecords', url: '/'}, 
         {N: 'Nosotros', url: '/'}, 
         {N: 'Vinilos', url: '/category/:idCat'}, 
-        {N: 'Genero', url: '/item/:IdP'}
+        {N: 'Genero', url: '/item/:idDetail'}
       ])
     
     return(
